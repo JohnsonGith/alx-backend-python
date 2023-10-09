@@ -1,6 +1,6 @@
-from typing import Sequence, Any, Union
+from typing import Sequence, Union
 
-def safe_first_element(lst: Sequence[Any]) -> Union[Any, None]:
+def safe_first_element(lst: Sequence) -> Union[None, lst[0]]:
     if lst:
         return lst[0]
     else:
