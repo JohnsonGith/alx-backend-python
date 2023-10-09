@@ -1,21 +1,14 @@
 #!/usr/bin/env python3
-"""
-Asynchronous coroutine that waits for a random delay between 0 and max_delay seconds.
-"""
-
+'''Task 0's module.
+'''
 import asyncio
 import random
+from typing import Generator
 
-async def wait_random(max_delay: float = 10) -> float:
-    """
-    Wait for a random delay between 0 and max_delay seconds.
 
-    Args:
-        max_delay (float, optional): The maximum delay in seconds (default is 10).
-
-    Returns:
-        float: The random delay in seconds.
-    """
-    delay = random.uniform(0, max_delay)
-    await asyncio.sleep(delay)
-    return delay
+async def async_generator() -> Generator[float, None, None]:
+    '''Generates a sequence of 10 numbers.
+    '''
+    for _ in range(10):
+        await asyncio.sleep(1)
+        yield random.random() * 10
