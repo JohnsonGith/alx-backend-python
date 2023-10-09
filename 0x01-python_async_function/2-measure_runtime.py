@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
-"""Task 2's module.
 """
+Asynchronous coroutine that waits for a random delay between 0 and max_delay seconds.
+"""
+
 import asyncio
-import time
+import random
 
-
-wait_n = __import__('1-concurrent_coroutines').wait_n
-
-
-def measure_time(n: int, max_delay: int) -> float:
-    """Computes the average runtime of wait_n.
+async def wait_random(max_delay: float = 10) -> float:
     """
-    start_time = time.time()
-    asyncio.run(wait_n(n, max_delay))
-    return (time.time() - start_time) / n
+    Wait for a random delay between 0 and max_delay seconds.
+
+    Args:
+        max_delay (float, optional): The maximum delay in seconds (default is 10).
+
+    Returns:
+        float: The random delay in seconds.
+    """
+    delay = random.uniform(0, max_delay)
+    await asyncio.sleep(delay)
+    return delay
